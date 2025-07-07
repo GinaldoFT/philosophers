@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/07 11:24:23 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:37:48 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	args_check(char *av[])
 
 int	main(int ac, char *av[])
 {
-	if (ac != 6)
-		return (0);
+	if (ac < 5 || ac > 6)
+		return (1);
 	if (args_check(av) == 1)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:19:41 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/07 11:19:43 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:34:35 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@
 
 typedef struct s_philo
 {
+	int				id;
+	int				meals_eaten;
+	long			last_meal_time;
 	pthread_t		philo;
-	long int		time_to_die;
+	pthread_mutex_t	meal_mutex;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 }	t_philo;
 
 #endif
