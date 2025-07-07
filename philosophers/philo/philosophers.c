@@ -6,39 +6,21 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/07 11:37:48 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/07 12:12:07 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	ft_atoi(const char *nptr)
+void	set_args(t_vars	*vars, char *av[], int ac)
 {
-	int	i;
-	int	result;
-
-	i = 0;
-	result = 0;
-	while (nptr[i] && (nptr[i] >= 48 && nptr[i] <= 57))
-	{
-		result *= 10;
-		result = result + nptr[i] - 48;
-		i++;
-	}
-	return (result);
-}
-
-
-int	ft_strlen(char *str)
-{
-	int	len;
-
-	len = 0;
-	if (!str)
-		return (0);
-	while (str[len])
-		len++;	
-	return (len);
+	vars->n_philos = ft_atoi(av[1]);
+	vars->time_to_die = ft_atoi(av[2]);
+	vars->time_to_eat = ft_atoi(av[3]);
+	vars->time_to_sleep = ft_atoi(av[4]);
+	vars->n_eat = -1;
+	if (ac == 6)
+		vars->n_eat = ft_atoi(av[5]);
 }
 
 int	args_check(char *av[])
@@ -66,9 +48,14 @@ int	args_check(char *av[])
 
 int	main(int ac, char *av[])
 {
+//	t_philo	philos;
+	t_vars	vars;
+
 	if (ac < 5 || ac > 6)
 		return (1);
 	if (args_check(av) == 1)
 		return (1);
+	set_args(&vars, av, ac);
+	printf("%d\n", vars.n_philos);
 	return (0);
 }
