@@ -6,11 +6,28 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/07 10:42:18 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:24:23 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int	ft_atoi(const char *nptr)
+{
+	int	i;
+	int	result;
+
+	i = 0;
+	result = 0;
+	while (nptr[i] && (nptr[i] >= 48 && nptr[i] <= 57))
+	{
+		result *= 10;
+		result = result + nptr[i] - 48;
+		i++;
+	}
+	return (result);
+}
+
 
 int	ft_strlen(char *str)
 {
