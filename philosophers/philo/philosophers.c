@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/07 12:12:07 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/09 12:06:47 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	args_check(char *av[])
 
 int	main(int ac, char *av[])
 {
-//	t_philo	philos;
-	t_vars	vars;
+	t_vars			vars;
 
+	vars.philos = init_philos(&vars);
 	if (ac < 5 || ac > 6)
 		return (1);
 	if (args_check(av) == 1)
