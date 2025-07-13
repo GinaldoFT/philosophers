@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/09 12:06:47 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/13 09:16:07 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ int	main(int ac, char *av[])
 	if (args_check(av) == 1)
 		return (1);
 	set_args(&vars, av, ac);
-	printf("%d\n", vars.n_philos);
+	if (init_forks(&vars) == 1)
+		return (1);
+	if (init_philos(&vars) == 1)
+		return (1);
+	if (start_threads(&vars) == 1)
+		return (1);
 	return (0);
 }
