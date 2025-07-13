@@ -6,11 +6,34 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/13 09:16:07 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/13 09:51:09 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int	simulation_should_stop(t_vars *vars)
+{
+	int	stop;
+
+	pthread_mutex_lock(&vars->stop_mutex);
+	stop = vars->stop;
+	pthread_mutex_unlock(&vars->stop_mutex);
+	return (stop);
+}
+
+void	print_action(t_philo *philo, char *action)
+{
+	long	timestamp;
+
+	pthread_mutex_lock(&philo->vars->print_mutex);
+	if (!simulation_should_stop(philo->vars))
+	{
+		timestamp = get_time() - philo->vars->start_time;
+		printf("%ld %d %s\n", timestamp, philo->id, action);
+	}
+	pthread_mutex_unlock(&philo->vars->vars->print_mutex);
+}
 
 void	set_args(t_vars	*vars, char *av[], int ac)
 {
