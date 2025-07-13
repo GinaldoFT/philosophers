@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:19:41 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/09 09:40:17 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/13 09:03:55 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <pthread.h>
+#include <sys/time.h>
 
 typedef struct s_vars	t_vars;
 
@@ -45,7 +46,9 @@ typedef struct s_vars
 	t_philo			*philos;
 }	t_vars;
 
-int	ft_atoi(const char *nptr);
-int	ft_strlen(char *str);
+void	ft_usleep(long time_in_ms);
+long	get_time(void);
+int		ft_atoi(const char *nptr);
+int		ft_strlen(char *str);
 
 #endif
