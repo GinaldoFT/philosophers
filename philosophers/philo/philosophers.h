@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:19:41 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/13 09:27:00 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/13 10:23:14 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int		ft_strlen(char *str);
 int		init_forks(t_vars *vars);
 int		init_philos(t_vars *vars);
 int		start_threads(t_vars *vars);
+void	*philo_routine(void	*arg);
 
 #endif
