@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/13 09:51:09 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:13:13 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_action(t_philo *philo, char *action)
 		timestamp = get_time() - philo->vars->start_time;
 		printf("%ld %d %s\n", timestamp, philo->id, action);
 	}
-	pthread_mutex_unlock(&philo->vars->vars->print_mutex);
+	pthread_mutex_unlock(&philo->vars->print_mutex);
 }
 
 void	set_args(t_vars	*vars, char *av[], int ac)
@@ -73,7 +73,7 @@ int	main(int ac, char *av[])
 {
 	t_vars			vars;
 
-	vars.philos = init_philos(&vars);
+	init_philos(&vars);
 	if (ac < 5 || ac > 6)
 		return (1);
 	if (args_check(av) == 1)

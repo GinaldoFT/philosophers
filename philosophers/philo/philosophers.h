@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:19:41 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/13 10:23:14 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:23:32 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PHILOSOPHERS_H
 
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <pthread.h>
 #include <sys/time.h>
 
@@ -54,5 +56,7 @@ int		init_forks(t_vars *vars);
 int		init_philos(t_vars *vars);
 int		start_threads(t_vars *vars);
 void	*philo_routine(void	*arg);
+void	print_action(t_philo *philo, char *action);
+int		simulation_should_stop(t_vars *vars);
 
 #endif

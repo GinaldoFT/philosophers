@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 10:10:42 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/13 10:22:27 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:24:21 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*philo_routine(void	*arg)
 		print_action(philo, "has taken a fork");
 		pthread_mutex_lock(philo->right_fork);
 		print_action(philo, "has taken a fork");
-		pthread_mutex_lock(philo->meal_mutex);
+		pthread_mutex_lock(&philo->meal_mutex);
 		print_action(philo, "is eating");
 		philo->last_meal_time = get_time();
 		philo->meals_eaten++;
@@ -37,4 +37,5 @@ void	*philo_routine(void	*arg)
 		ft_usleep(philo->vars->time_to_sleep);
 		print_action(philo, "is thinking");
 	}
+	return (NULL);
 }
