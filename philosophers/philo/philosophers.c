@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/19 17:13:13 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/20 15:52:10 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int	args_check(char *av[])
 
 int	main(int ac, char *av[])
 {
-	t_vars			vars;
+	t_vars		vars;
+	pthread_t	monitor_thread;
 
 	init_philos(&vars);
 	if (ac < 5 || ac > 6)
@@ -85,5 +86,10 @@ int	main(int ac, char *av[])
 		return (1);
 	if (start_threads(&vars) == 1)
 		return (1);
+	if (pthread_create(&monitor_thread, NULL, &monitor_philos, &vars) != 0)
+		return (1);
+	pthread_join(monitor_thread, NULL);
+	for (int i = 0; i < vars.n_philos; i++)
+		pthread_join(vars.philos[i].philo, NULL);
 	return (0);
 }
