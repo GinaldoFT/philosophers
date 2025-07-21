@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 09:10:30 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/13 09:10:37 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:36:31 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ int	start_threads(t_vars *vars)
 {
 	int	i;
 
-	vars->start_time = get_time();
 	i = 0;
+	pthread_mutex_init(&vars->print_mutex, NULL);
+	pthread_mutex_init(&vars->stop_mutex, NULL);
 	while (i < vars->n_philos)
 	{
 		if (pthread_create(&vars->philos[i].philo, NULL,
@@ -67,3 +68,17 @@ int	start_threads(t_vars *vars)
 	}
 	return (0);
 }
+
+void	ft_closed(t_vars *vars)
+{
+	int	i;
+
+	i = -1;
+	pthread_mutex_destroy(&vars->print_mutex);
+	pthread_mutex_destroy(&vars->stop_mutex);
+	free(vars->philos);
+	while (++i < vars->n_philos)
+		pthread_mutex_destroy(&vars->forks[i]);
+	free(vars->forks);
+}
+

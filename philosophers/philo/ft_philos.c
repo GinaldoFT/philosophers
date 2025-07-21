@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 10:10:42 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/20 16:24:52 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:04:46 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	*philo_routine(void	*arg)
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
 		ft_usleep(60);
+	if (philo->vars->n_philos == 1)
+	{
+		print_action(philo, "has taken a fork");
+		ft_usleep(philo->vars->time_to_die);
+		return (NULL);
+	}
 	while (!simulation_should_stop(philo->vars))
 	{
 		pthread_mutex_lock(philo->left_fork);
@@ -83,8 +89,7 @@ void	*monitor_philos(void *arg)
 			{
 				pthread_mutex_unlock(&vars->philos[i].meal_mutex);
 				pthread_mutex_lock(&vars->print_mutex);
-				printf("%ld %d died\n",
-				get_time() - vars->start_time,
+				printf("%ld %d died\n",	get_time() - vars->start_time,
 				vars->philos[i].id);
 				pthread_mutex_unlock(&vars->print_mutex);
 				pthread_mutex_lock(&vars->stop_mutex);

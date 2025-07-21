@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:19:41 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/20 15:49:05 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:36:27 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	*philo_routine(void	*arg);
 void	print_action(t_philo *philo, char *action);
 int		simulation_should_stop(t_vars *vars);
 void	*monitor_philos(void *arg);
+void	ft_closed(t_vars *vars);
 
 #endif
