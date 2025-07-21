@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 09:10:30 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/21 11:36:31 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:42:27 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,3 @@ void	ft_closed(t_vars *vars)
 		pthread_mutex_destroy(&vars->forks[i]);
 	free(vars->forks);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:51:51 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/13 09:04:01 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:46:08 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philosophers.h"
@@ -52,7 +52,6 @@ int	ft_strlen(char *str)
 	if (!str)
 		return (0);
 	while (str[len])
-		len++;	
+		len++;
 	return (len);
 }
-

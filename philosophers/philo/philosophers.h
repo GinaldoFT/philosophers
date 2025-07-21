@@ -6,18 +6,18 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:19:41 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/21 11:36:27 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:45:18 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <sys/time.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <pthread.h>
+# include <sys/time.h>
 
 typedef struct s_vars	t_vars;
 
