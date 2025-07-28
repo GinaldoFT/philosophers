@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:18:48 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/28 10:35:31 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:52:53 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	set_args(t_vars	*vars, char *av[], int ac)
 {
 	vars->n_philos = ft_atoi(av[1]);
 	if (vars->n_philos < 1)
+	{
+		ft_putstr_error("Error\nNumber philo < 1");
 		return (1);
+	}
 	vars->time_to_die = ft_atoi(av[2]);
 	vars->time_to_eat = ft_atoi(av[3]);
 	vars->time_to_sleep = ft_atoi(av[4]);
@@ -47,8 +50,6 @@ int	set_args(t_vars	*vars, char *av[], int ac)
 	vars->stop = 0;
 	if (ac == 6)
 		vars->n_eat = ft_atoi(av[5]);
-	if (vars->n_eat == 0)
-		return (1);
 	return (0);
 }
 
@@ -68,7 +69,10 @@ int	args_check(char *av[])
 			if (av[i][j] >= '0' && av[i][j] <= '9')
 				j++;
 			else
+			{
+				ft_putstr_error("Error\ninvalid character");
 				return (1);
+			}
 		}
 		i++;
 	}
@@ -78,12 +82,13 @@ int	args_check(char *av[])
 int	main(int ac, char *av[])
 {
 	t_vars		vars;
-	int			i;
 	pthread_t	monitor_thread;
 
-	i = -1;
 	if (ac < 5 || ac > 6)
+	{
+		ft_putstr_error("Error\ninvalid number of arguments");
 		return (1);
+	}
 	if (args_check(av) == 1 || set_args(&vars, av, ac) == 1)
 		return (1);
 	vars.start_time = get_time();
@@ -96,8 +101,6 @@ int	main(int ac, char *av[])
 	if (pthread_create(&monitor_thread, NULL, &monitor_philos, &vars) != 0)
 		return (1);
 	pthread_join(monitor_thread, NULL);
-	while (++i < vars.n_philos)
-		pthread_join(vars.philos[i].philo, NULL);
 	ft_closed(&vars);
 	return (0);
 }

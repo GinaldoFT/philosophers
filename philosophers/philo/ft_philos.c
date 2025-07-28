@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 10:10:42 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/28 10:32:52 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:26:27 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	philo_routine_utils(t_philo *philo)
 {
-	if (philo->id == philo->vars->n_philos)
+	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->right_fork);
 		print_action(philo, "has taken a fork");
@@ -66,7 +66,7 @@ int	all_philos_ate_enough(t_vars *vars)
 	int	i;
 	int	done;
 
-	if (vars->n_eat <= 0)
+	if (vars->n_eat < 0)
 		return (0);
 	i = 0;
 	done = 1;
@@ -83,7 +83,7 @@ int	all_philos_ate_enough(t_vars *vars)
 
 static int	monitor_philos_utils(t_vars *vars, int i)
 {
-	if (vars->n_eat > 0 && all_philos_ate_enough(vars))
+	if (vars->n_eat >= 0 && all_philos_ate_enough(vars))
 	{
 		pthread_mutex_lock(&vars->stop_mutex);
 		vars->stop = 1;
