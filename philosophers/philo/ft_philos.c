@@ -6,7 +6,7 @@
 /*   By: ginfranc <ginfranc@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 10:10:42 by ginfranc          #+#    #+#             */
-/*   Updated: 2025/07/21 11:53:54 by ginfranc         ###   ########.fr       */
+/*   Updated: 2025/07/28 10:32:52 by ginfranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 static void	philo_routine_utils(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
-	print_action(philo, "has taken a fork");
-	pthread_mutex_lock(philo->right_fork);
-	print_action(philo, "has taken a fork");
+	if (philo->id == philo->vars->n_philos)
+	{
+		pthread_mutex_lock(philo->right_fork);
+		print_action(philo, "has taken a fork");
+		pthread_mutex_lock(philo->left_fork);
+		print_action(philo, "has taken a fork");
+	}
+	else
+	{
+		pthread_mutex_lock(philo->left_fork);
+		print_action(philo, "has taken a fork");
+		pthread_mutex_lock(philo->right_fork);
+		print_action(philo, "has taken a fork");
+	}
 	pthread_mutex_lock(&philo->meal_mutex);
 	print_action(philo, "is eating");
 	philo->last_meal_time = get_time();
